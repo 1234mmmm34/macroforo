@@ -1,0 +1,142 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+.nav-link, a{
+    color: #063970;
+    font-weight: 500;
+    border-radius: 5px;
+
+}
+
+.logo-text {
+    font-family: 'Cursive', sans-serif; /* Puedes elegir la fuente cursiva que más te guste */
+    font-size: 25px;  /* Tamaño de la fuente, ajusta según lo que necesites */
+    font-style: italic;  /* Aplica el estilo cursivo */
+    font-weight: bold;  /* Opcional: Si quieres que sea negrita */
+}
+
+#search-addon{
+    background-color: #f4723f;
+}
+
+.nav-link.active {
+    background-color: #063970 !important;
+    color: white !important; /* Para que el texto sea legible */
+    margin-right: 10px;
+    padding-left: 2%;
+
+}
+
+.form-inicio{
+
+
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    max-width: 500px; /* Ancho máximo */
+    margin: 20px auto; /* Centrado en la página */
+    background-color: #f9f9f9; /* Color de fondo claro */
+
+}
+
+.nav-link.active, .button{
+    background-color: #de5b02 !important;
+    color: white !important; /* Para que el texto sea legible */
+    margin-right: 10px;
+    padding-left: 2%;
+    border-color: transparent;
+    font-weight: 500;
+
+
+}
+
+
+
+.navbar-toggler{
+    background-color: transparent !important;
+    border-color: transparent;
+    background-color: rgb(11, 11, 78);  /* Aquí le damos el color azul */
+
+}
+
+.lead{
+    font-weight: 500;
+
+}
+
+.search{
+    border-color: black;
+}
+
+li{
+    text-align: center;
+}
+.search-div{
+    position: absolute;
+    top: 450px;
+    transform: translateX(-50%);
+    width: 50%;
+  
+}
+
+.ins{
+    border-top-right-radius: 0% !important;
+    border-bottom-right-radius: 0% !important;
+
+    border-top-left-radius: 30px !important; /* Redondear la parte derecha */
+    border-bottom-left-radius: 30px !important; /* Redondear la parte derecha */
+    padding-left: 40px;
+    
+
+}
+.form-control:focus {
+    border-color: #f4723f; /* Color de borde cuando está enfocado */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra de enfoque */
+}
+
+.input-group-text {
+    background-color: #11285c; /* Fondo azul para el icono */
+    color: white; /* Color blanco para el icono */
+    border: none; /* Eliminar borde */
+    border-top-right-radius: 30px; /* Redondear la parte derecha */
+    border-bottom-right-radius: 30px; /* Redondear la parte derecha */
+    font-size: 18px; /* Aumentar tamaño del icono */
+    padding: 0.75rem; /* Mejor padding */
+}
+
+.card-title, .card-text, label{
+    color: #304571;
+    font-weight: 500;
+
+}
+
+.card-title{
+    font-weight: 600;
+
+}
+
+.card{
+    border: 0px solid !important;
+}
+
+input{
+    background-color: #c6ced8 !important;
+}
+
+@media (max-width: 567px) {
+    /* En pantallas pequeñas, el botón de hamburguesa se mueve debajo */
+
+    .lead{
+        font-weight: 450;
+        font-size: medium;
+
+    
+    }
+
+    .title{
+        font-size:larger;
+
+    }
+}

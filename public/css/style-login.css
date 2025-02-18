@@ -1,0 +1,37 @@
+.loginimg1{
+    position:absolute;
+    left: 0px;
+    top: 85px;
+
+
+
+}
+
+.loginimg2{
+    position:absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+.form-inicio{
+    z-index:1;
+}
+
+header{
+    z-index:2;
+}
+
+
+
+@media (max-width: 567px) {
+    /* En pantallas pequeñas, el botón de hamburguesa se mueve debajo */
+
+    .loginimg1, .loginimg2{
+
+    display: none;
+    
+    }
+
+
+
+}
