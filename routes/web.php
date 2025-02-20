@@ -6,6 +6,9 @@ use App\Http\Controllers\HomeController;  // Asegúrate de importar el controlad
 use App\Http\Controllers\EntradasController;
 use App\Http\Controllers\DocumentsController;
 use App\Http\Controllers\FirebaseStorageController;
+use App\Http\Controllers\CategoriaController;
+
+
 
 
 
@@ -35,6 +38,10 @@ Route::get('/documents', function () {
     return view('auth.documents'); // Esto carga la vista register.blade.php
 });
 
+Route::get('/categorias', function () {
+    return view('categorias'); // Esto carga la vista categorias.blade.php
+});
+
 
 // Rutas de autenticación (esto incluye login, registro, etc.)
 Auth::routes();
@@ -45,6 +52,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 // Rutas para el controlador de empleados (CRUD)
 Route::resource('empleados', EmpleadoController::class);
 Route::resource('entradas', EntradasController::class);
+Route::resource('categorias', CategoriaController::class);
+
 
 Route::post('/entradas', [EntradasController::class, 'store'])->name('entradas.store');
 //Route::get('/documents/{id}', [EntradasController::class, 'show'])->name('documents.show'); // Mostrar detalles de una entrada específica
@@ -56,6 +65,8 @@ Route::get('/documents', [DocumentsController::class, 'index'])->name('documents
 // Ruta para ver una entrada específica
 Route::get('/documents/{slug}', [DocumentsController::class, 'show'])->name('documents.show');
 
+// Ruta para ver una entrada específica
+Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index');
 
 //Ruta para subir una imagen a Firebase
 Route::post('/upload-image', [FirebaseStorageController::class, 'uploadImage'])->name('upload.image');

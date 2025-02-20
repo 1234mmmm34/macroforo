@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Agregar entrada</title>
     <!-- Enlace a los archivos de Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -56,7 +57,8 @@
 
 
                     <div class="d-flex justify-content-between accion-buttons">
-                        <button type="submit" class="btn-custom btn-acciones" style="background-color: #063970; border-color: #063970; font-weight:600">Enviar</button>
+                        <button type="submit" class="btn-custom btn-acciones"
+                            style="background-color: #063970; border-color: #063970; font-weight:600">Enviar</button>
                         <button type="button" class="btn-secondary btn-acciones">Guardar Borrador</button>
                     </div>
                 </div>
@@ -181,6 +183,7 @@
             }
         });
 
+
         addImagenButton.addEventListener('click', function () {
             // Crear un nuevo input de tipo file
             const newImageUpload = document.createElement('div');
@@ -198,45 +201,32 @@
     `;
             subtemasContainer.appendChild(newImageUpload);
 
-            // Verificar si 'plantillaImage' está definido y ocultarlo
-            const plantillaImage = document.getElementById('plantillaImage');  // Asegúrate de que este ID exista en tu HTML
-            if (plantillaImage) {
-                plantillaImage.style.display = 'none'; // Ocultar la imagen de plantilla
-                console.log("Imagen plantilla oculta"); // Depuración para verificar que la imagen de plantilla se oculta
-            } else {
-                console.error("No se encontró el elemento con ID 'plantillaImage'");
-            }
-
             // Asignar un evento al input de tipo file
             const inputFile = newImageUpload.querySelector('input[type="file"]');
             inputFile.addEventListener('change', function (e) {
-                const formData = new FormData();
-                formData.append('image', e.target.files[0]);
 
-                // Enviar la imagen al servidor (Laravel)
-                fetch('{{ route('upload.image') }}', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                    }
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.image_url) {
-                            alert('Imagen subida correctamente: ' + data.image_url);
-                            // Aquí puedes mostrar la imagen subida en la interfaz si lo deseas
-                            const imageUrl = data.image_url;
+
+                const file = e.target.files[0]; // Obtén el archivo seleccionado
+                    if (file) {
+                        const reader = new FileReader();
+
+                        reader.onload = function (event) {
+                            // Crear un elemento <img> y asignarle la URL de la imagen cargada
                             const imgElement = document.createElement('img');
-                            imgElement.src = imageUrl;
-                            imgElement.alt = 'Imagen subida';
+                            imgElement.src = event.target.result; // Utilizamos la URL creada por FileReader
+                            imgElement.alt = 'Imagen seleccionada';
+                            imgElement.classList.add('img-fluid', 'mt-3', 'imgAdd');
+
+                            // Agregar la imagen a la vista previa
                             newImageUpload.appendChild(imgElement);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-            });
+
+
+                        };
+
+                        // Leer el archivo como URL de datos
+                        reader.readAsDataURL(file);
+                    }
+                });
 
             // Agregar el evento para eliminar el contenedor de la imagen
             const removeButton = newImageUpload.querySelector('.remove-image-item');
@@ -246,6 +236,7 @@
 
             subtemaIndex++;
         });
+
 
     </script>
 

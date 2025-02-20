@@ -11,6 +11,13 @@ body {
 
 }
 
+.imgAdd{
+    height: 70%;
+    width: 70%;
+    margin-left: 12%;
+    margin-bottom: 10px;
+}
+
 .btn-secondary{
     background-color: #df5d2a !important;
     border-color: #df5d2a !important;

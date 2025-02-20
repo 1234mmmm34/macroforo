@@ -65,8 +65,12 @@
 
             <!-- Contenido Principal -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-4" id="content-area">
-                <h1>Seleccione una entrada</h1>
+<!-- 
+                    <h1>Seleccione una entrada</h1>
                 <p>Haz clic en una entrada del menú lateral para ver más detalles.</p>
+            
+-->
+
             </main>
         </div>
     </div>
@@ -86,9 +90,11 @@
                     url: '/documents/' + entradaId, // Llamada a la ruta para obtener la entrada
                     method: 'GET',
                     success: function(response) {
+
                         // Actualizar el contenido del área principal con los datos de la entrada
                         $('#content-area').html(`
-                            <br>
+
+                        <br>
                             <h1 style="font-weight: 600; color: #063970">${response.titulo}</h1>
                             <pre>
                             <p style="font-weight: 300; color: #063970; font-family: 'Poppins', sans-serif;">${response.introduccion}</p>
