@@ -9,12 +9,18 @@ class Categoria extends Model
 {
     use HasFactory;
 
-    protected $table = 'categorias'; // Definir la tabla si es necesario
-    protected $primaryKey = 'id_categoria'; // Establecer 'id_categoria' como la clave primaria
-    public $timestamps = true; // Usar timestamps (si la tabla tiene 'created_at' y 'updated_at')
+    protected $table = 'categorias';
+    
+    protected $primaryKey = 'id_categoria';
 
+    public $timestamps = false; // No se manejan los timestamps automáticos de Laravel (creado/actualizado)
+
+    // Definir los campos que pueden ser asignados de forma masiva
     protected $fillable = [
         'nombre',
-        'id_catprimaria'
+        'slug',
+        'usuario',
+       // 'fecha',
+        'id_catprimaria',
     ];
 }

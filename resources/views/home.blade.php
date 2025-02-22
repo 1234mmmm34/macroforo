@@ -74,7 +74,6 @@
                     <h5>Enlaces rápidos</h5>
                     <ul class="list-unstyled">
                         <li><a href="#" class="text-white text-decoration-none">Inicio</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Preguntas frecuentes</a></li>
                         <li><a href="#" class="text-white text-decoration-none">Nuestro ERP</a></li>
                         <li><a href="#" class="text-white text-decoration-none">Iniciar sesión</a></li>
                     </ul>

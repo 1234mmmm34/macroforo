@@ -9,6 +9,11 @@
 
 }
 
+.btn-primary{
+    background-color: #de5b02;
+    border-color: #de5b02;
+}
+
 #sidebar {
     position: fixed;
     top: 70;
@@ -16,6 +21,14 @@
     height: 100%;
     width: 250px; /* O ajusta el tamaño a tu preferencia */
 
+}
+
+.form-label{
+    padding-top: 10px;
+}
+
+#palabrasClave{
+    background-color: rgb(255, 255, 255) !important;
 }
 
 thead{
@@ -33,6 +46,14 @@ thead{
     height: 100vh;
     box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
     /* Sombra a la derecha */
+}
+
+#addFileForm{
+    background-color: rgb(241, 240, 240);
+    height: 70px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    padding-left: 20px;
 }
 
 /* Aseguramos que el contenido principal ocupe el resto del espacio */

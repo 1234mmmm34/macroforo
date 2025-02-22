@@ -22,27 +22,6 @@
 </head>
 
 <body>
-    <!-- Navbar/Header de Bootstrap -->
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-0 border-bottom navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                <img src="{{ asset('images/logo1.png') }}" alt="Mi Aplicación" style="height: 50px; width: auto;" class="me-2">
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a href="#" class="nav-link">Inicio</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Preguntas frecuentes</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link" style="margin-right: 10px;">Nuestro ERP</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Iniciar sesión</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
 
     <div class="container my-5">
 

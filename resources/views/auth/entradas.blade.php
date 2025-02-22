@@ -14,7 +14,7 @@
 </head>
 
 <body>
-
+ 
     <div class="container">
         <h1 style="font-weight: 600; color: #063970">Agregar entrada</h1>
         <form action="{{ route('entradas.store') }}" method="POST" enctype="multipart/form-data">
@@ -53,6 +53,7 @@
                             párrafo</button>
                         <button type="button" id="addImagenButton" class="btn-secondary mt-3">Agregar una
                             imagen</button>
+                        <button type="button" id="addPdfButton" class="btn-secondary mt-3">Agregar un PDF</button>
                     </div>
 
 
@@ -102,6 +103,8 @@
         const subtemasContainer = document.getElementById('subtemasContainer');
         const plantillaImage = document.getElementById('plantillaImage'); // Obtener la imagen plantilla
         const addImagenButton = document.getElementById('addImagenButton');
+        const addPdfButton = document.getElementById('addPdfButton'); // Obtén el botón de agregar PDF
+
 
 
         // Función para agregar un nuevo subtema
@@ -207,26 +210,26 @@
 
 
                 const file = e.target.files[0]; // Obtén el archivo seleccionado
-                    if (file) {
-                        const reader = new FileReader();
+                if (file) {
+                    const reader = new FileReader();
 
-                        reader.onload = function (event) {
-                            // Crear un elemento <img> y asignarle la URL de la imagen cargada
-                            const imgElement = document.createElement('img');
-                            imgElement.src = event.target.result; // Utilizamos la URL creada por FileReader
-                            imgElement.alt = 'Imagen seleccionada';
-                            imgElement.classList.add('img-fluid', 'mt-3', 'imgAdd');
+                    reader.onload = function (event) {
+                        // Crear un elemento <img> y asignarle la URL de la imagen cargada
+                        const imgElement = document.createElement('img');
+                        imgElement.src = event.target.result; // Utilizamos la URL creada por FileReader
+                        imgElement.alt = 'Imagen seleccionada';
+                        imgElement.classList.add('img-fluid', 'mt-3', 'imgAdd');
 
-                            // Agregar la imagen a la vista previa
-                            newImageUpload.appendChild(imgElement);
+                        // Agregar la imagen a la vista previa
+                        newImageUpload.appendChild(imgElement);
 
 
-                        };
+                    };
 
-                        // Leer el archivo como URL de datos
-                        reader.readAsDataURL(file);
-                    }
-                });
+                    // Leer el archivo como URL de datos
+                    reader.readAsDataURL(file);
+                }
+            });
 
             // Agregar el evento para eliminar el contenedor de la imagen
             const removeButton = newImageUpload.querySelector('.remove-image-item');
@@ -237,7 +240,32 @@
             subtemaIndex++;
         });
 
+        // Función para agregar un nuevo archivo PDF
+        addPdfButton.addEventListener('click', function () {
+            // Crear un nuevo input para cargar PDF
+            const newPdfUpload = document.createElement('div');
+            newPdfUpload.classList.add('pdf-upload-item');
+            newPdfUpload.innerHTML = `
+            <div class="mb-3">
+                <div class="opc">
+                    <input type="file" name="pdf_${subtemaIndex}" id="pdf-${subtemaIndex}" class="form-control" accept="application/pdf" required>
+                    <button type="button" class="remove-pdf-item mt-2 delete" data-item="${subtemaIndex}">
+                        <i class="fas fa-trash" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <input type="text" style="width: 94%; margin-top: 5px;" class="form-control" name="pie-pdf" id="pie-pdf" placeholder="Agrega un pie de página para el PDF" required>
+            </div>
+        `;
+            subtemasContainer.appendChild(newPdfUpload);
 
+            // Asignar un evento para eliminar el contenedor del PDF
+            const removeButton = newPdfUpload.querySelector('.remove-pdf-item');
+            removeButton.addEventListener('click', function () {
+                newPdfUpload.remove();  // Eliminar el contenedor del PDF
+            });
+
+            subtemaIndex++;
+        });
     </script>
 
 </body>

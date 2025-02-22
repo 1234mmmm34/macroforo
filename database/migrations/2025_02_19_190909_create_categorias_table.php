@@ -4,27 +4,23 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateCategoriasTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up()
     {
         Schema::create('categorias', function (Blueprint $table) {
-            $table->id('id_categoria');  // Define el id como 'id_categoria'
-            $table->string('nombre', 200); // Define el nombre de la categoría
-            $table->integer('id_catprimaria')->nullable(); // Definimos 'id_catprimaria' como entero, puede ser nulo
-            $table->timestamps();
+            $table->integer('id_categoria')->autoIncrement();
+            $table->string('nombre', 200);
+            $table->string('slug', 200);
+            $table->integer('usuario');
+            $table->timestamp('fecha');
+            $table->integer('id_catprimaria')->nullable(); // Si es nullable
+            $table->primary('id_categoria');
         });
     }
-    
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('categorias');
     }
-};
+}
