@@ -23,13 +23,10 @@
 <body>
 
     <div class="container my-5">
-
         <h3 class="mb-4">Categorías</h3>
-      
 
-        <!-- Formulario para agregar nueva fila -->
+        <!-- Formulario para agregar nueva categoría -->
         <div class="mb-4">
-
             <form id="addFileForm" action="{{ route('categorias.store') }}" method="POST">
                 @csrf
                 <div class="row">
@@ -44,13 +41,11 @@
                     <div class="col-md-4">
                         <button type="submit" class="btn btn-primary">Agregar</button>
                     </div>
-
                 </div>
-
             </form>
         </div>
 
-        <!-- Tabla -->
+        <!-- Tabla con DataTables -->
         <table id="categoriasTable" class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -62,32 +57,42 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Los datos de la tabla se llenarán dinámicamente -->
                 @foreach($categorias as $categoria)
                 <tr>
+                    <td>{{ $categoria->id_categoria }}</td>
                     <td>{{ $categoria->nombre }}</td>
-                    <td>{{ $categoria->slug }}</td>
                     <td>{{ $categoria->usuario }}</td>
                     <td>{{ $categoria->fecha }}</td>
                     <td>
                         <form action="{{ route('categorias.destroy', $categoria->id_categoria) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit">Eliminar</button>
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
                         </form>
                     </td>
                 </tr>
-            @endforeach
+                @endforeach
             </tbody>
         </table>
     </div>
 
     <script>
+        $(document).ready(function () {
+            // Inicializar DataTable con paginación
+            $('#categoriasTable').DataTable({
+                "paging": true, // Habilita la paginación
+                "searching": true, // Habilita la búsqueda
+                "lengthChange": true, // Permite cambiar el número de registros por página
+                "pageLength": 5, // Número de filas por página
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es_es.json" // Traducción al español
+                }
+            });
+        });
     </script>
 
     <!-- Enlace a los scripts de Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
 
 </body>
 
